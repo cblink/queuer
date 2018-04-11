@@ -1,0 +1,16 @@
+{
+    "name": "cblink/queuer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hanson",
+            "email": "h@hanc.cc"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Cblink\\Queuer\\": "src/"
+        }
+    }
+}
