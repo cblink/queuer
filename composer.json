@@ -12,5 +12,8 @@
         "psr-4": {
             "Cblink\\Queuer\\": "src/"
         }
+    },
+    "require-dev": {
+        "laravel/framework": "^5.6"
     }
 }

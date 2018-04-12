@@ -18,7 +18,7 @@ class QueuerServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         Route::group([
-            'prefix' => 'queue-manager',
+            'prefix' => 'queuer',
             'namespace' => 'Cblink\Queuer\Http\Controllers',
             'middleware' => 'web',
         ], function () {

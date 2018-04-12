@@ -6,7 +6,7 @@ namespace Cblink\Queuer;
 
 use Illuminate\Support\Facades\Queue;
 
-class Queuer
+class DelayJob
 {
 
     private $connection;
@@ -20,7 +20,7 @@ class Queuer
      * @param int $stop
      * @return array
      */
-    public function getDelay($start = 0, $stop = -1)
+    public function jobs($start = 0, $stop = -1)
     {
         return Queue::getRedis()
             ->connection($this->getConnection())
@@ -33,7 +33,7 @@ class Queuer
      * @param $payload
      * @return int
      */
-    public function removeDelay($payload)
+    public function delete($payload)
     {
         return Queue::getRedis()
             ->connection($this->getConnection())
@@ -45,7 +45,7 @@ class Queuer
      *
      * @return string
      */
-    private function getDelayKey()
+    protected function getDelayKey()
     {
         return 'queues:' . $this->getQueue() . ':delayed';
     }
@@ -68,7 +68,7 @@ class Queuer
      *
      * @return \Illuminate\Config\Repository|mixed
      */
-    private function getConnection()
+    protected function getConnection()
     {
         return $this->connection ?: config('queue.connections.redis.connection', 'default');
     }
@@ -91,7 +91,7 @@ class Queuer
      *
      * @return \Illuminate\Config\Repository|mixed
      */
-    private function getQueue()
+    protected function getQueue()
     {
         return $this->queue ?: config('queue.connections.redis.queue', 'default');
     }
